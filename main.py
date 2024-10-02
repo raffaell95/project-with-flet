@@ -1,4 +1,5 @@
 import flet as ft
+from partials.content import MainContent
 from partials.sidebar import Sidebar
 
 
@@ -10,13 +11,13 @@ class App:
 
     def main(self):
         self.sidebar = Sidebar()
-        self.content = ft.Container()
+        self.content = MainContent()
 
         layout = ft.ResponsiveRow(
             columns=12,
             controls=[
-                self.sidebar,
-                # self.content
+                # self.sidebar,
+                self.content
             ],
             expand=True
         )
