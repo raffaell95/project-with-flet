@@ -16,7 +16,7 @@ class App:
             columns=12,
             controls=[
                 self.sidebar,
-                self.content
+                # self.content
             ],
             expand=True
         )

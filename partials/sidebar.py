@@ -1,6 +1,6 @@
 import flet as ft
 
-from components.skills import SkillRing
+from components.skills import SkillRing, SkillProgressbar
 
 class SidebarHeader(ft.UserControl):
     def build(self):
@@ -15,9 +15,9 @@ class SidebarHeader(ft.UserControl):
                         ),
                         alignment=ft.alignment.bottom_right,
                         bgcolor=ft.colors.PRIMARY,
-                        small_size=20
+                        small_size=20,
                     ),
-                    ft.Text(value='Dalton Peixoto', theme_style=ft.TextThemeStyle.BODY_LARGE),
+                    ft.Text(value='Rafael Ribeiro', theme_style=ft.TextThemeStyle.BODY_LARGE),
                     ft.Text(value='Desenvolvedor Fullstack', theme_style=ft.TextThemeStyle.BODY_MEDIUM)
                 ],
                 horizontal_alignment=ft.CrossAxisAlignment.CENTER
@@ -27,6 +27,10 @@ class SidebarHeader(ft.UserControl):
         )
     
 class SidebarContent(ft.UserControl):
+   def __init__(self):
+       super().__init__()
+       self.expand = True
+
    def build(self):
        location = ft.Column(
            controls=[
@@ -62,14 +66,58 @@ class SidebarContent(ft.UserControl):
            ]
        )
 
-       skills = ft.Container()
-       technologies = ft.Container()
-       cv = ft.Container()
+       skills = ft.Column(
+           controls=[
+               SkillProgressbar(title='HTML', value=1),
+               SkillProgressbar(title='CSS', value=1),
+               SkillProgressbar(title='PYTHON', value=0.9),
+               SkillProgressbar(title='JS', value=0.8),
+               SkillProgressbar(title='PHP', value=0.6),
+           ]
+       )
+
+       technologies = ft.Column(
+            controls=[
+                ft.ListTile(
+                    leading=ft.Icon(name=ft.icons.CHECK, color=ft.colors.PRIMARY),
+                    title=ft.Text(value='Flet', theme_style=ft.TextThemeStyle.BODY_MEDIUM),
+                ),
+                ft.ListTile(
+                    leading=ft.Icon(name=ft.icons.CHECK, color=ft.colors.PRIMARY), 
+                    title=ft.Text(value='Versionamento com GIT', theme_style=ft.TextThemeStyle.BODY_MEDIUM),
+                ),
+                ft.ListTile(
+                    leading=ft.Icon(name=ft.icons.CHECK, color=ft.colors.PRIMARY), 
+                    title=ft.Text(value='Bootstrap, Webpack, Framer Motion, Tailwind', theme_style=ft.TextThemeStyle.BODY_MEDIUM),
+                ),
+                ft.ListTile(
+                    leading=ft.Icon(name=ft.icons.CHECK, color=ft.colors.PRIMARY), 
+                    title=ft.Text(value='Typescript, ReactJS, Angular', theme_style=ft.TextThemeStyle.BODY_MEDIUM),
+                ),
+                ft.ListTile(
+                    leading=ft.Icon(name=ft.icons.CHECK, color=ft.colors.PRIMARY), 
+                    title=ft.Text(value='Django, Flask, FastAPI', theme_style=ft.TextThemeStyle.BODY_MEDIUM),
+                ),
+            ],
+            alignment=ft.MainAxisAlignment.START,
+            spacing=0,
+        )
+
+       cv = ft.TextButton(
+            text='DOWNLOAD CV',
+            style=ft.ButtonStyle(color=ft.colors.GREY),
+            icon=ft.icons.DOWNLOAD,
+            icon_color=ft.colors.GREY,
+            url='https://drive.google.com/uc?export=download&id=1vHKz5-tKDC_HMwqaGYMbsAicGrKPwyFL',
+
+            # https://sites.google.com/site/gdocs2direct/?pli=1
+        )
 
        return ft.Container(
            bgcolor=ft.colors.BLACK12,
            padding=ft.padding.all(20),
            content=ft.Column(
+               scroll=ft.ScrollMode.HIDDEN,
                controls=[
                    location,
                    ft.Divider(height=30),
