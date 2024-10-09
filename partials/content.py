@@ -72,6 +72,7 @@ class MainContent(ft.UserControl):
         )
 
         experience = ft.Container(
+            padding=ft.padding.symmetric(vertical=20),
             content=ft.ResponsiveRow(
                 columns=12,
                 controls=[
@@ -94,6 +95,66 @@ class MainContent(ft.UserControl):
                                 )
                             )
                         ]
+                    ),
+                    ft.Text(
+                        col={'xs': 6, 'md': 3},
+                        spans=[
+                            ft.TextSpan(
+                                text='500 + ',
+                                style=ft.TextStyle(
+                                    color=ft.colors.PRIMARY,
+                                    weight=ft.FontWeight.W_900,
+                                    size=20
+                                )
+                            ),
+                            ft.TextSpan(
+                                text=' Projetos concluidos',
+                                style=ft.TextStyle(
+                                    color=ft.colors.WHITE,
+                                    size=16
+                                )
+                            )
+                        ]
+                    ),
+                    ft.Text(
+                        col={'xs': 6, 'md': 3},
+                        spans=[
+                            ft.TextSpan(
+                                text='3k + ',
+                                style=ft.TextStyle(
+                                    color=ft.colors.PRIMARY,
+                                    weight=ft.FontWeight.W_900,
+                                    size=20
+                                )
+                            ),
+                            ft.TextSpan(
+                                text=' Clientes satisfeitos',
+                                style=ft.TextStyle(
+                                    color=ft.colors.WHITE,
+                                    size=16
+                                )
+                            )
+                        ]
+                    ),
+                    ft.Text(
+                        col={'xs': 6, 'md': 3},
+                        spans=[
+                            ft.TextSpan(
+                                text='7 + ',
+                                style=ft.TextStyle(
+                                    color=ft.colors.PRIMARY,
+                                    weight=ft.FontWeight.W_900,
+                                    size=20
+                                )
+                            ),
+                            ft.TextSpan(
+                                text=' Linguagens de domínio',
+                                style=ft.TextStyle(
+                                    color=ft.colors.WHITE,
+                                    size=16
+                                )
+                            )
+                        ]
                     )
                 ]
             )
@@ -108,7 +169,7 @@ class MainContent(ft.UserControl):
         return ft.Container(
             content=ft.Column(
                 controls=[
-                   # banner,
+                    banner,
                     experience,
                     projects,
                     prices,
